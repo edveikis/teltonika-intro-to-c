@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main(){
+   FILE *fp;
+   fp = fopen("test.txt","w");
+
+   char ch = fgetc(fp);  //Trying to read data, despite of writing mode opened 
+   if(ferror(fp)){      //Error detected in the file stream pointer
+      printf("File is opened in writing mode!");
+      printf("\nError in reading from the file!");
+      perror("Error Message from perror");
+      //Identifying the type of error using perror() function
+   }
+   fclose(fp);
+   return(0);
+}

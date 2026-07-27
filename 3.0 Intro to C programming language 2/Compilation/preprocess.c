@@ -1,0 +1,9 @@
+#define CAT MEOW
+
+CAT CAT
+
+CAT
+
+CATCAT
+
+CAT, CAT

@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main(void)
+{
+    char copy_from[30] = "original_file.txt";
+    char copy_to[30] = "copied_file.txt";
+
+    FILE *original = NULL;
+    FILE *copy = NULL;
+
+    original = fopen(copy_from, "r");
+
+    if (original == NULL)
+        return 1;
+    
+    // Clear the copied file
+    FILE *clear_file = fopen(copy_to, "w");
+    if (clear_file != NULL)
+    {
+        fclose(clear_file);
+    } else {
+        fclose(original);
+        return 1;
+    }
+
+    copy = fopen(copy_to, "a+");
+    
+    if (copy == NULL)
+    {
+        fclose(original);
+        return 1;
+    }
+        
+    char line[500];
+    while (fgets(line, sizeof(line), original)) 
+        fprintf(copy, "%s", line);
+
+    fclose(copy);
+    fclose(original);
+
+    return 0;
+}

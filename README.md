@@ -1,1 +1,0 @@
-# teltonika-intro-to-c
